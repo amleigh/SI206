@@ -1,3 +1,7 @@
+import nltk
+from nltk.book import *
+import math
+import random
 # Using text2 from the nltk book corpa, create your own version of the
 # MadLib program.  
 
@@ -9,7 +13,72 @@
 # Deliverables:
 # 1) Print the orginal text (150 tokens)
 # 1) Print the new text
+
 print("START*******")
 
+blog=(text2[:150])
+st_blog=' '.join(blog) 
+new_blog=st_blog
+nouns=[]
+hold_noun=[]
+other=[]
+adj=[]
+verb=[]
+adv=[]
+prep=[]
+sub_other=[]
+new=nltk.pos_tag(blog)
+for toke in new:
+ 	if toke[1] =="NN": #noun
+ 		nouns.append(toke[0])
+ 	if toke[1] =="JJ": #adj
+ 		adj.append(toke[0])
+ 		other.append(toke[0])
+ 	if toke[1] =="VBD": #past tense verb
+ 		verb.append(toke[0])
+ 		other.append(toke[0])
+ 	if toke[1] =="RB": #adv
+ 		adv.append(toke[0])
+ 		other.append(toke[0])
+ 	if toke[1] =="IN":
+ 		prep.append(toke[0])
+ 		other.append(toke[0]) #Preposition or subordinating conjunction	
 
-print("\n\nEND*******")
+replacing=math.trunc(len(nouns)*.15)
+i=0
+while i < replacing:
+	rand_item = random.choice(nouns)
+	hold_noun.append(rand_item)
+	i+=1
+	
+for n in hold_noun:
+	noun_new= input("Please enter in a noun - ")
+	new_blog=new_blog.replace(n, noun_new)
+
+replace_other=math.trunc(len(other)*.10)
+i=0
+while i < replace_other:
+	rand_item = random.choice(other)
+	sub_other.append(rand_item)
+	i+=1
+
+for n in sub_other:
+	if n in verb:
+		verb_new= input("Please enter in a past tense verb - ")
+		new_blog=new_blog.replace(n, verb_new)
+	if n in adj:
+		adj_new= input("Please enter in an adjective - ")
+		new_blog=new_blog.replace(n, adj_new)
+	if n in adv:
+		adv_new= input("Please enter in an adverb - ")
+		new_blog=new_blog.replace(n, adv_new)
+	if n in prep:
+		prep_new= input("Please enter in a preposition or subordinatin conjunction - ")
+		new_blog=new_blog.replace(n, prep_new)	
+
+print(new_blog)
+	               
+
+
+
+print ("\n\nEND*******")
