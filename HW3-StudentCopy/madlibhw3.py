@@ -18,12 +18,17 @@ print("START*******")
 
 blog=(text2[:150])
 
+text=[]
 def spaced(word):
-	if word in [",", ".", "?", "!", ":"]:
+	if word in [",", ".", "?", "!", ":", ";"]:
 		return word
 	else:
 		return " " + word
-		
+for i in blog:
+	text.append(spaced(i))
+print("Here is the text of the first 150 tokens...")
+print (''.join(text))
+
 st_blog=' '.join(blog)
 new_blog=st_blog
 nouns=[]
@@ -83,7 +88,12 @@ for n in sub_other:
 		prep_new= input("Please enter in a preposition or subordinatin conjunction - ")
 		new_blog=new_blog.replace(n, prep_new)	
 
-print(new_blog)
+words=new_blog.split()
+final=[]
+for i in words:
+	final.append(spaced(i))
+print("Here is your final MadLib text...")
+print(''.join(final))
 	               
 
 
