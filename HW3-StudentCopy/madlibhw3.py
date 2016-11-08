@@ -17,7 +17,14 @@ import random
 print("START*******")
 
 blog=(text2[:150])
-st_blog=' '.join(blog) 
+
+def spaced(word):
+	if word in [",", ".", "?", "!", ":"]:
+		return word
+	else:
+		return " " + word
+		
+st_blog=' '.join(blog)
 new_blog=st_blog
 nouns=[]
 hold_noun=[]
