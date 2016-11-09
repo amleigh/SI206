@@ -92,9 +92,11 @@ words=new_blog.split()
 final=[]
 for i in words:
 	final.append(spaced(i))
-print("Here is your final MadLib text...")
+print("\nHere is your final MadLib text...")
 print(''.join(final))
-	               
+	             
+##not giving the last word input, also changing same word more than once
+	             
 
 
 
