@@ -96,7 +96,7 @@ print("\nHere is your final MadLib text...")
 print(''.join(final))
 	             
 ##not giving the last word input, also changing same word more than once
-	             
+
 
 
 

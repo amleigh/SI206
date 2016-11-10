@@ -1,7 +1,6 @@
 import requests
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
-import re
 # Use https://www.si.umich.edu/programs/bachelor-science-
 # information/bsi-admissions as a template.
 # STEPS 
@@ -17,30 +16,20 @@ import re
 
 url= 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
 
-def change_web(base_url):
-	html = urllib.request.urlopen(base_url).read()
-	soup = BeautifulSoup(html, 'html.parser')
 
-	#Part 1
-	for words in soup.find_all("student"):
-		new= soup.prettify()
-		word=re.sub("student", "AMAZING student", new)
-		words.replace_with(word)
+html = urllib.request.urlopen(url).read()
+soup = BeautifulSoup(html, 'html.parser')
 
-	#Part 2
-	links= soup.find_all('img')
-	# for link in links:
-	# 	href=link["src"]
 
-	#Part 3
-	for lin in soup.find_all('img'):
-		lin['src']='media/logo.png'
-			
+new= soup.prettify()
+new=new.replace("student", "AMAZING student")
+new=new.replace("https://testbed.files.wordpress.com/2012/09/bsi_exposition_041316_192.jpg", 'soloshot.jpg')
 
-	web= str(soup)
-	
-	f = open('new_webpage.html', 'w')
-	f.write(web)
-	f.close()
 
-change_web(url)
+new=new.replace('logo2.png', 'media/logo.png')
+		
+
+f = open('new_webpage.html', 'w')
+f.write(new)
+f.close()
+

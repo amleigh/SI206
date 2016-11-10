@@ -9,10 +9,7 @@ from textblob import TextBlob
 
 # Be prepared to change the search term during demo.
 
-access_token = "55384204-2U7JpuQPBXwn1SLksxFm1xIOXlWXHFa2myBjyZ0FC"
-access_token_secret = "6LngNVVSaNNdbGx9470fQwmO7se7sCtEO6AFBZ6t8DOYX"
-consumer_key = "dqdlGvMo7XZ018QMyMwTIWDNu"
-consumer_secret = "KjGonAhjMjvfQw4BW85fuitYIJFGSrlGUZYYddnmIg0zH6JWIH"
+
 
 
 
