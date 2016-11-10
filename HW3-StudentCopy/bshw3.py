@@ -1,3 +1,7 @@
+import requests
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+import re
 # Use https://www.si.umich.edu/programs/bachelor-science-
 # information/bsi-admissions as a template.
 # STEPS 
@@ -10,3 +14,33 @@
 
 # Deliverables
 # Make sure the new page is uploaded to your GitHub account.
+
+url= 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
+
+def change_web(base_url):
+	html = urllib.request.urlopen(base_url).read()
+	soup = BeautifulSoup(html, 'html.parser')
+
+	#Part 1
+	for words in soup.find_all("student"):
+		new= soup.prettify()
+		word=re.sub("student", "AMAZING student", new)
+		words.replace_with(word)
+
+	#Part 2
+	links= soup.find_all('img')
+	# for link in links:
+	# 	href=link["src"]
+
+	#Part 3
+	for lin in soup.find_all('img'):
+		lin['src']='media/logo.png'
+			
+
+	web= str(soup)
+	
+	f = open('new_webpage.html', 'w')
+	f.write(web)
+	f.close()
+
+change_web(url)
